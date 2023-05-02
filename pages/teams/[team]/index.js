@@ -1,10 +1,9 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { TeamsPageLayout } from "../index";
-import teamLayoutComponent from "../../../layouts/team-layout";
+import layoutComponent from "../../../layouts/team-layout";
 
 const getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
-export const TeamPageLayout = teamLayoutComponent(TeamsPageLayout, getLayout);
 
 const TeamPage = () => {
   const router = useRouter();
@@ -16,7 +15,9 @@ const TeamPage = () => {
   );
 };
 
+export const TeamPageLayout = layoutComponent(TeamsPageLayout, getLayout);
 TeamPage.getLayout = TeamPageLayout;
+
 
 const NestedLayout = ({ children }) => {
   const router = useRouter();
