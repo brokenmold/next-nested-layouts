@@ -1,17 +1,22 @@
 import { useRouter } from "next/router";
 import Link from "next/link";
 import { TeamsPageLayout } from "../index";
-import nestLayout from "../../../utils/nestLayout";
+import teamLayoutComponent from "../../../layouts/team-layout";
+
+const getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
+export const TeamPageLayout = teamLayoutComponent(TeamsPageLayout, getLayout);
 
 const TeamPage = () => {
   const router = useRouter();
   const { team } = router.query;
   return (
     <section>
-      <h3>{team}</h3>
+      <h3>{team} yo</h3>
     </section>
   );
 };
+
+TeamPage.getLayout = TeamPageLayout;
 
 const NestedLayout = ({ children }) => {
   const router = useRouter();
@@ -38,8 +43,5 @@ const NestedLayout = ({ children }) => {
     </div>
   );
 };
-
-
-TeamPage.getLayout = TeamPageLayout;
 
 export default TeamPage;

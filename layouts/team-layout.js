@@ -1,3 +1,3 @@
-const nestLayout = (parent, child) => (page) => parent(child(page));
+const teamLayoutComponent = (parent, child) => (page) => parent(child(page));
 
-export default nestLayout;
+export default teamLayoutComponent;
