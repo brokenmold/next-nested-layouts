@@ -7,10 +7,12 @@ const TeamsPage = () => {
 };
 
 export const NestedLayout = ({ children }) => {
+
   useEffect(() => {
     console.log("TeamsPageLayout mounted");
     return () => console.log("TeamsPageLayout unmounted");
   }, []);
+
   return (
     <div className={styles.teams}>
       <div className={styles.sidebar}>
@@ -29,7 +31,9 @@ export const NestedLayout = ({ children }) => {
           </ol>
         </nav>
       </div>
+
       {children}
+
     </div>
   );
 };
