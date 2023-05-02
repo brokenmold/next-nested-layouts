@@ -4,7 +4,11 @@ import Link from "next/link";
 
 
 import { TeamsPageLayout } from "../index";
-import nestLayout from "../../../utils/nestLayout";
+import nestLayout from "../../../layouts/team-layout";
+
+const getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
+export const TeamPageLayout = nestLayout(TeamsPageLayout, getLayout);
+
 
 const TeamPage = () => {
   const router = useRouter();
@@ -17,11 +21,6 @@ const TeamPage = () => {
 };
 
 const NestedLayout = ({ children }) => {
-  useEffect(() => {
-    console.log("TeamPageLayout mounted");
-    return () => console.log("TeamPageLayout unmounted");
-  }, []);
-
   const router = useRouter();
   const { team } = router.query;
 
@@ -36,9 +35,6 @@ const NestedLayout = ({ children }) => {
   );
 };
 
-const getLayout = (page) => <NestedLayout>{page}</NestedLayout>;
-
-export const TeamPageLayout = nestLayout(TeamsPageLayout, getLayout);
 
 TeamPage.getLayout = TeamPageLayout;
 
